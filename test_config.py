@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from src.utils.config import Config
-from src.agents.base_agent import BaseAgent
+from src.agents.BaseAgent import BaseAgent
 
 
 class TestAgent(BaseAgent):

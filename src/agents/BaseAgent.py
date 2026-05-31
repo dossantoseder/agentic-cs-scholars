@@ -1,15 +1,15 @@
 """
-Classe base para todos os agentes do sistema.
+Base class for all agents in the system.
 """
 
 import uuid
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Any, Dict
-
+from src.utils.data_manager import DataManager
 
 class BaseAgent(ABC):
-    """Classe base abstrata para todos os agentes."""
+    """Abstract base class for all agents."""
     
     def __init__(self, name: str):
         self.agent_id = str(uuid.uuid4())[:8]
@@ -34,3 +34,18 @@ class BaseAgent(ABC):
     def get_state(self, key: str, default: Any = None) -> Any:
         """Recupera um valor do estado interno."""
         return self.state.get(key, default)
+    
+    def update_field(self, researcher_id: str, field: str, value: Any) -> bool:
+        """
+        Updates a specific field of a researcher.
+        
+        Args:
+            researcher_id: Identifier of the researcher (name or ID)
+            field: Field name to update
+            value: New value
+        
+        Returns:
+            True if update was successful
+        """
+        dm = DataManager()
+        return dm.update_field(researcher_id, field, value)

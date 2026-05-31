@@ -10,7 +10,7 @@ from typing import Dict, Any, List, Optional
 from datetime import datetime
 from urllib.parse import quote
 
-from src.agents.base_agent import BaseAgent
+from src.agents.BaseAgent import BaseAgent
 
 
 class EnrichmentAgent(BaseAgent):
