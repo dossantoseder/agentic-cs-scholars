@@ -6,7 +6,7 @@ import uuid
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Any, Dict
-from src.utils.data_manager import DataManager
+from src.utils.DataManager import DataManager
 
 class BaseAgent(ABC):
     """Abstract base class for all agents."""

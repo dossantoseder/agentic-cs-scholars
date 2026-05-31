@@ -27,7 +27,7 @@ class NLQAgent(BaseAgent):
     def __init__(self):
         super().__init__("NLQAgent")
         self.client = OpenAI(api_key=Config.OPENAI_API_KEY)
-        self.model = "gpt-4o"
+        self.model = Config.OPENAI_MODEL
         self.dataset = None
         self.dataset_path = Config.DATA_DIR / "pesquisadores.json"
     
@@ -108,10 +108,10 @@ class NLQAgent(BaseAgent):
             return f"Error generating answer: {str(e)}"
     
     def _build_system_prompt(self) -> str:
-    """Builds system prompt with dataset summary."""
-    dataset_summary = self._get_dataset_summary()
-    
-    return f"""
+        """Builds system prompt with dataset summary."""
+        dataset_summary = self._get_dataset_summary()
+        
+        return f"""
 You are a data analyst assistant specialized in Brazilian CNPq researcher data.
 
 DATASET SUMMARY:
@@ -125,7 +125,7 @@ RULES:
 2. Be concise and objective
 3. Use numbers and statistics when appropriate
 4. If information is not available, say: "No data available for the requested query"
-5. **ALWAYS RESPOND IN ENGLISH**
+5. ALWAYS RESPOND IN ENGLISH
 
 FORMAT:
 - For counts: "There are X researchers..."
